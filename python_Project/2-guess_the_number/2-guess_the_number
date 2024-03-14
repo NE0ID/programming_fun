@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+
+import random
+
+def guess(x):
+    random_num = random.randint(1, x)
+    guess = 0
+
+    while (guess != random_num):
+        guess = int(input("> "))
+        if (guess > random_num):
+            print("This number is too high !")
+        elif (guess < random_num):
+            print("Too low, try again.")
+    print("Congrats, you found my number !")
+
+def computer_guess(x):
+    low = 1
+    high = x
+    feedback = ""
+
+    while (feedback != "c"):
+        guess = random.randint(low, high)
+        feedback = input("Is {} too high (H), too low (L) or correct (C) ?".format(guess))
+        if (feedback == "h"):
+            high = guess - 1
+        elif (feedback == "l"):
+            low = guess + 1
+    print("The computer guessed your number ,{}, correctly!".format(guess))
+
+computer_guess(50)
